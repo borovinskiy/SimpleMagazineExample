@@ -1,0 +1,10 @@
+{% extends "PrognozMagazineBundle::view.html.twig" %}
+{% block titile %}Добавление продукта{% endblock %}
+{% block content %}
+    <div class="form add-product-form">
+        <form action="{{ path('_product_add') }}" {{ form_enctype(form) }} method="POST">
+            {{ form_widget(form) }}
+            <input type="submit" />
+        </form>
+    </div>
+{% endblock %}

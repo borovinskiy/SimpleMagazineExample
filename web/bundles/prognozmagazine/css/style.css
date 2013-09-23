@@ -1,0 +1,117 @@
+/* 
+    Document   : style
+    Created on : Sep 9, 2013, 2:31:28 PM
+    Author     : root
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.main { 
+    margin-top: 70px;
+}
+
+.product {
+    border-radius: 12px;
+    background-color: #e2e2e2;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center, center;
+    background-color: #fff;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    display: inline-block;
+}
+
+.product-management {
+ /*   margin: 12px;    
+    position: absolute;  
+    border-radius: 50% 50% 50% 50%;
+    background-color: #e2e2e2;
+*/    
+}
+
+.product-title {
+    color: #fff;
+    background: none repeat scroll 0 0 rgba(0,0,0,0.75);
+    padding: 15px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.product-price {    
+}
+
+.product-add-to-card {
+    position: absolute;
+    bottom: 10;
+}
+
+li.product-wrapper {
+    list-style: none;
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    margin: 4px 4px;
+}
+
+.catalog-product-wrapper {
+    margin: 4px 4px 4px 4px;    
+    display: inline-block;
+}
+
+.list-group-indent {
+    margin-left: 10px;
+}
+
+.bs-docs-sidenav {
+    background-color: #FFFFFF;
+    border-radius: 6px 6px 6px 6px;
+    /* box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067); */
+    box-shadow: none;
+    margin: 0 0 5px;
+    padding: 0;
+}
+
+.catalog-menu .list-group-item {
+
+    background-color: #FFFFFF;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    display: block;
+    margin-bottom: -1px;
+    padding: 0px 0px 0px 15px;
+    position: relative;
+
+}
+
+.catalog-menu .nav-pills > li > a {
+    border-radius: 0px 0px;
+    cursor: pointer;
+}  
+
+ul.nav-pills > li > a {
+    border-radius: 0px 0px;
+    cursor: pointer;
+}    
+
+.catalog-menu a {
+    cursor: pointer;
+}
+
+.menu-primary {
+    /* margin-left: 10px; 
+    border: 1px solid #e2e2e2;
+    border-radius: 8px 8px; */
+}
+
+.user-data, .card-message {
+    margin: 5px 15px;
+}
+
+.card-message {
+    display: none;
+}

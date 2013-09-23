@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <!--
+    <parameters>
+        <parameter key="prognoz_magazine.example.class">Prognoz\MagazineBundle\Example</parameter>
+    </parameters>
+
+    <services>
+        <service id="prognoz_magazine.example" class="%prognoz_magazine.example.class%">
+            <argument type="service" id="service_id" />
+            <argument>plain_value</argument>
+            <argument>%parameter_name%</argument>
+        </service>
+    </services>
+    -->
+    
+    <!--
+    <parameters>
+        <parameter key="prognoz_magazine.UserService.class">Prognoz\MagazineBundle\Services\UserService</parameter>
+    </parameters>
+
+    <services>
+        <service id="UserService" class="%prognoz_magazine.UserService.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+    </services>
+    -->
+    
+</container>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('bundles/acmedemo/css/demo.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/prognozmagazine/css/bootstrap.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/prognozmagazine/css/bootstrap-theme.css') }}" />                
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="../../assets/js/html5shiv.js"></script>
+            <script src="../../assets/js/respond.min.js"></script>
+        <![endif]-->
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}  
+             {% block header %}{% endblock %}
+             {% block content %}{% endblock %}
+        {% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('bundles/prognozmagazine/js/jquery.js') }}"></script>
+            <script src="{{ asset('bundles/prognozmagazine/js/bootstrap.js') }}"></script>
+        {% endblock %}
+        {% block footer %}<footer></footer>
+        {% endblock %}
+    </body>
+</html>

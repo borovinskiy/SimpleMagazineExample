@@ -1,0 +1,9 @@
+{% extends "PrognozMagazineBundle::view.html.twig"%}
+
+{% block menu_primary -%}
+    <h3><small>Каталог</small></h3>
+    <ul class="catalog-menu nav nav-pills nav-stacked">
+        {% include "PrognozMagazineBundle:Catalog:links.inc.html.twig" with { 'catalog': catalog } %}
+    </ul>
+{% endblock %}
+    

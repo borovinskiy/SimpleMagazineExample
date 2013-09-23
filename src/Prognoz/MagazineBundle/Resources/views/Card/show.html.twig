@@ -1,0 +1,42 @@
+{% extends "PrognozMagazineBundle::view.html.twig"%}
+
+{% block content -%}
+    <h1>Card</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ entity.status }}</td>
+            </tr>
+            <tr>
+                <th>Товары</th>
+                <td>
+                    <ul>
+                    {% for product in entity.products %}
+                        <li>  {{ product.title }} </li>
+                    {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('api_card') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('api_card_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

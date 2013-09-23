@@ -1,0 +1,20 @@
+{% block product %}
+    <div class="product product-{{ entity.id }} pull-left" style="background-image: url('{{ app.request.getBasePath() }}/{{ entity.WebPath }}')">
+        
+        <div class="btn-group pull-right">
+            <a href="{{ path('api_product_edit', { 'id': entity.id }) }}" class="product-management btn btn-primary">
+                <span class="glyphicon glyphicon-cog"></span>
+            </a>
+            <div class="product-price product-price-{{ entity.id }} btn btn-primary">
+                {{ entity.price }} р.
+            </div> 
+            <div class="product-add-to-card btn btn-success" onclick="jQuery().magazine('addToCard',{{ entity.id }})">
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+            </div>    
+        </div>        
+        <div class="product-title pruduct-title-{{ entity.id }}">
+            {{ entity.title }}
+            
+        </div>    
+    </div>    
+{% endblock %}

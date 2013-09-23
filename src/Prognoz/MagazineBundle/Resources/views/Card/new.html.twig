@@ -1,0 +1,15 @@
+{% extends "PrognozMagazineBundle::view.html.twig"%}
+
+{% block content -%}
+    <h1>Card creation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('api_card') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

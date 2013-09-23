@@ -1,0 +1,23 @@
+## YAML Template.
+#parameters:
+#  user_service.class: "Prognoz\MagazineBundle\Services\UserService"
+services:
+    prognoz_magazine.user_service:      
+      class: Prognoz\MagazineBundle\Services\UserService
+      arguments: 
+        entityManager: "@doctrine.orm.entity_manager"
+    prognoz_magazine.product_service:
+      class: Prognoz\MagazineBundle\Services\ProductService
+      arguments:
+        entityManager: "@doctrine.orm.entity_manager"
+    prognoz_magazine.category_service:      
+      class: Prognoz\MagazineBundle\Services\CategoryService
+      arguments: 
+        entityManager: "@doctrine.orm.entity_manager"
+    prognoz_magazine.catalog_service:
+      class: Prognoz\MagazineBundle\Services\CatalogService
+      arguments:
+        entityManager: "@doctrine.orm.entity_manager"
+        categoryService: "@prognoz_magazine.category_service"
+        productService: "@prognoz_magazine.product_service"
+       

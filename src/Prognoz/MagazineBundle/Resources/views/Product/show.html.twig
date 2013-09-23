@@ -1,0 +1,16 @@
+{% extends "PrognozMagazineBundle::view.html.twig" %}
+
+{% block content -%}
+
+    <h1>Продукт</h1>
+    
+    {% block product %}
+    
+        {% embed 'PrognozMagazineBundle:Product:view.html.twig' %}
+        {% endembed %}
+        
+    {% endblock %}
+        
+{% endblock %}
+    
+    

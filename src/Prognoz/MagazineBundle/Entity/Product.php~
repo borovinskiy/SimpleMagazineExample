@@ -1,0 +1,178 @@
+<?php
+namespace Prognoz\MagazineBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Item of product
+ * @ORM\Entity
+ * @ORM\Table
+ * @author Arsen I. Borovinskii
+ */
+class Product {
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
+     * @var integer
+     */
+    private $id;
+    
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    private $title;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Color")      
+     * @ORM\JoinColumn(name="color_id", referencedColumnName="id")
+     * @var integer
+     */
+    private $color;
+    
+    /**
+     * Cost of product 
+     * @ORM\Column(type="integer")
+     * @var integer
+     */
+    private $price;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Category")      
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * @var integer
+     */
+    private $category;
+    
+    /**
+     * @ORM\Column(type="integer")
+     * @var integer. Reference to Photo.id
+     */
+    private $photo;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Product
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set color
+     *
+     * @param integer $color
+     * @return Product
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+    
+        return $this;
+    }
+
+    /**
+     * Get color
+     *
+     * @return integer 
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * Set price
+     *
+     * @param integer $price
+     * @return Product
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return integer 
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set category
+     *
+     * @param integer $category
+     * @return Product
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return integer 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set photo
+     *
+     * @param integer $photo
+     * @return Product
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+    
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return integer 
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+}

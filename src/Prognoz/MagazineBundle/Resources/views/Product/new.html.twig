@@ -1,0 +1,15 @@
+{% extends "PrognozMagazineBundle::view.html.twig" %}
+
+{% block content -%}
+    <h1>Создание продукта</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('api_product') }}">
+            К списку продуктов
+        </a>
+    </li>
+</ul>
+{% endblock %}

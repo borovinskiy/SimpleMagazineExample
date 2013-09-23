@@ -1,0 +1,130 @@
+<?php
+namespace Prognoz\MagazineBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Item of product
+ * @ORM\Entity
+ * @ORM\Table
+ * @author Arsen I. Borovinskii
+ */
+class Card {
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
+     * @var integer
+     */
+    private $id;
+    
+    /**
+     * Reference to user of this Card
+     * @ORM\Column(type="integer")
+     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @var type user;
+     */
+    private $user;
+    
+    /**
+     * Collections of product in Card
+     * @ORM\Column(type="integer")
+     * @ORM\ManyToMany(targetEntity="Product")
+     * @ORM\JoinTable(name="cards_products", 
+     * joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")}, 
+     * inverseJoinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")})            
+     * @var type Product Collections
+     */
+    private $products;
+    
+    /**
+     * Status of card. 0: discard. 1: active. 2: appruved. 3: complete.
+     * @ORM\Column(type="integer")            
+     * @var type integer
+     */
+    private $status;
+    
+    public function __construct() {
+        $this->products = new \Doctrine\Common\Collections\ArrayCollection();       // products must be initialized in constructor
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set user
+     *
+     * @param integer $user
+     * @return Card
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return integer 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set products
+     *
+     * @param integer $products
+     * @return Card
+     */
+    public function setProducts($products)
+    {
+        $this->products = $products;
+    
+        return $this;
+    }
+
+    /**
+     * Get products
+     *
+     * @return integer 
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return Card
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+}

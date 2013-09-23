@@ -1,0 +1,5 @@
+prognoz_magazine:
+    resource: "@PrognozMagazineBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

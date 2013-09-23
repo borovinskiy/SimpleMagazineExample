@@ -1,0 +1,45 @@
+{# view catalog Products and subcatalog products #}
+{% extends "PrognozMagazineBundle::view.html.twig"%}
+
+{% block menu_primary %}
+    <ul class="catalog-menu nav nav-pills nav-stacked">
+        {% include "PrognozMagazineBundle:Catalog:links.inc.html.twig" with { 'catalog': catalog } %}
+    </ul>
+{% endblock %}
+
+{% block content -%}
+<nav class="navbar" role="navigation">
+    <div class="navbar-header">
+        {% if category.parent %}
+            <a onclick='jQuery().magazine("viewCatalog",{{ parent_id }})' href="#" class="btn btn-bg navbar-btn pull-left">{{ category.parent }} <span class="glyphicon glyphicon-chevron-right"></span></a>
+        {% endif %}  
+        <span class="navbar-brand">{{ category.title }}</span>
+    </div>
+    <div class="collapse navbar-collapse">              
+        <a href="{{ path('api_category_edit',{'id': category.id}) }}" class="pull-right btn btn-bg navbar-btn"><span class="glyphicon glyphicon-cog"></span></a>
+    </div>    
+</nav>
+
+    {% block products %}
+        <div class="product-list">
+            {% for product in products %}
+                <div class="catalog-product-wrapper"> 
+                    {% include 'PrognozMagazineBundle:Product:view.html.twig' with {'entity': product} %}
+                </div>        
+            {% endfor %}    
+        </div>            
+    {% endblock %}
+
+    {% block random_products %}
+        {% if random_products %}
+        <div class="product-list random-product-list well">            
+            {% for random_product in random_products %}
+                <div class="catalog-product-wrapper">
+                    {% include 'PrognozMagazineBundle:Product:view.html.twig' with {'entity': random_product} %}
+                </div>        
+            {% endfor %}    
+        </div> 
+        {% endif %}
+    {% endblock %}
+
+{% endblock %}

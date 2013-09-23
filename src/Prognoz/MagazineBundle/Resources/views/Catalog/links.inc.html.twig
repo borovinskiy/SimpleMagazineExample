@@ -1,0 +1,14 @@
+{# recuslivly catalog links for menu #}
+
+{% block catalog %}
+{% for category in catalog %}
+    <li class="list-group-item">
+        <a onclick='jQuery().magazine("viewCatalog",{{ category.id }})'>{{ category.title }}<span class="glyphicon glyphicon-circle-arrow-right pull-right"></span></a>
+        {% if category.childrens is defined %}
+            <ul class="menu-nav nav nav-list bs-docs-sidenav menu-inside">
+                {% include "PrognozMagazineBundle:Catalog:links.inc.html.twig" with { 'catalog': category.childrens } %}
+            </ul>
+        {% endif %}
+    </li>    
+{% endfor %}
+{% endblock %}          

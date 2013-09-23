@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app>
+    <head>
+    {% block head %}
+        {% block stylesheet %}
+            <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
+            <link rel="stylesheet" href="{{ asset('bundles/acmedemo/css/demo.css') }}" />
+            <link rel="stylesheet" href="{{ asset('bundles/prognozmagazine/css/bootstrap.css') }}" />
+            <link rel="stylesheet" href="{{ asset('bundles/prognozmagazine/css/bootstrap-theme.css') }}" />
+            <link rel="stylesheet" href="{{ asset('bundles/prognozmagazine/css/style.css') }}" />
+        {% endblock %}
+        {% block javascript_header %}
+        {% endblock %}    
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="{{ asset('bundles/prognozmagazine/js/html5shiv.js') }}"></script>
+            <script src="{{ asset('bundles/prognozmagazine/js/respond.min.js') }}"></script>
+        <![endif]-->
+    {% endblock %}
+        <title>{% block title %}Магазин{% endblock %}</title>
+    </head>
+    <body ng-init="cardNumber=0;">
+    {% block body %}
+        {% block header %} 
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{{ path('api_catalog_show', {'id': '1'}) }}">Магазин</a>
+                    </div>
+                    <div class="navbar-collapse collapse">                        
+                        <ul class="nav navbar-nav" data-id="header-menu">
+                            {% block header_menu %}
+                                <li><a href="{{ path('api_catalog_show', {'id': '1'}) }}">Каталог</a></li>
+                                <li><a href="{{ path('_contacts') }}">Контакты</a></li>
+                                <li><a data-toggle="modal" href="#cardModal"><span class="glyphicon glyphicon-shopping-cart"></span> Корзина <span class="badge" id="card-badge"></span></a></li>
+                                <!-- <li><a href="{{ path('api_card') }}">Корзина <span class="badge" id="card-badge" ng-model="cardNumber">{{ '{{cardNumber}}' }}</span></a></li> -->
+                            {% endblock %}
+                        </ul>
+                    </div>            
+                </div>
+            </div>
+        {% endblock %}
+
+        <div class="main">    
+            <!-- <div class="container"> -->
+                <div class="col-sm-3 col-xs-6 menu-primary">{% block menu_primary %}{% endblock%}</div>
+                <div class="col-sm-9 col-xs-12 main-content-wrapper"><div class="main-content">{% block content %}{% endblock %}</div></div>
+            <!-- </div> -->
+        </div>
+
+        {% if code is defined %}
+            <h2>Code behind this page</h2>
+            <div class="block">
+                <div class="symfony-content">{{ code|raw }}</div>
+            </div>
+        {% endif %}
+    {% endblock %}
+    {% embed 'PrognozMagazineBundle:Card:modal.html.twig' %}
+    {% endembed %}
+        <footer>
+            {% block footer %}
+                {% embed 'PrognozMagazineBundle::management.html.twig' %}
+                {% endembed %}
+            {% endblock %}
+        </footer>
+        {% block javascripts %}
+            <script src="{{ asset('bundles/prognozmagazine/js/jquery.js') }}"></script>
+            <script src="{{ asset('bundles/prognozmagazine/js/bootstrap.js') }}"></script>
+            <script src="{{ asset('bundles/prognozmagazine/js/jquery.json.js') }}"></script>
+            <script src="{{ asset('bundles/prognozmagazine/js/jstorage.js') }}"></script>
+            <script src="{{ asset('bundles/prognozmagazine/js/magazine.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>    

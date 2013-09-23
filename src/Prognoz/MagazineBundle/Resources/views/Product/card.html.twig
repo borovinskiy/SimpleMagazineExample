@@ -1,0 +1,18 @@
+{# widget of product in card #}
+{% block product %}
+    <div class="product product-{{ entity.id }} pull-left" style="background-image: url('{{ app.request.getBasePath() }}/{{ entity.WebPath }}')">
+        
+        <div class="btn-group pull-right">
+            <div class="product-price product-price-{{ entity.id }} btn btn-primary">
+                {{ entity.price }} р.
+            </div> 
+            <div class="product-add-to-card btn btn-danger" onclick="jQuery().magazine('delFromCard', {{ entity.id }} )">
+                <span class="glyphicon glyphicon-remove-sign"></span>
+            </div>    
+        </div>        
+        <div class="product-title pruduct-title-{{ entity.id }}">
+            {{ entity.title }}
+            
+        </div>    
+    </div>    
+{% endblock %}
