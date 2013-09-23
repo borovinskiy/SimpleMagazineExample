@@ -49,8 +49,8 @@
              */
             var setting = $.extend({
                 url: {
-                    app: '/shop/app_dev.php',        
-                    card: settings.url.app + '/shop/app_dev.php/api/card/',
+                    //app: '/shop/app_dev.php',        
+                    //card: settings.url.app + '/shop/app_dev.php/api/card/',
                 },
             },options);
             
@@ -66,7 +66,9 @@
                 user = userFromStorage;
                 methods.setUser(user);
                 if (user.id !== null && user.id !== undefined) {
-                    methods.loadUserFromServer(user.id, function() { console.log("Загрузка данных с сервера закончена."); });    // Сюда можно поместить callback, на случай успешной загрузки пользователя чтобы что-то сделать с коризной
+                    methods.loadUserFromServer(user.id, function() { 
+                       // console.log("Загрузка данных с сервера закончена."); 
+                    });    // Сюда можно поместить callback, на случай успешной загрузки пользователя чтобы что-то сделать с коризной
                     $("div.user-data").data("user",user).css("display","none");                    
                 }
             }
@@ -79,9 +81,9 @@
         show : function( ) {
             //return this.each(function() {
                 // некоторый полезный код
-                console.log("show method is complete");
+                //console.log("show method is complete");
                 for (var i=0; i < card.products.length; i++) {
-                    console.log("В корзине товар: " + card.products[i]);
+                    //console.log("В корзине товар: " + card.products[i]);
                 }
             //});
             return this;
@@ -100,7 +102,7 @@
          * Удаляет заказ продукта из корзины
          */    
         delFromCard: function(productId) {
-            console.log("Удаляем продукт " + productId);
+            //console.log("Удаляем продукт " + productId);
             for (var i=0; i < card.products.length; i++) {
                 if (productId == card.products[i]) {
                     card.products.splice(i, 1);
@@ -130,7 +132,7 @@
                 modalBody.append('<li class="product-' + productId + '-wrapper product-wrapper">' + productId + '</li>');
                 var productWrapper = jQuery(".product-" + productId + "-wrapper");                
                 productWrapper.load(settings.url.product + productId + "/widget/card");
-                console.log("Обновлен cardModal продуктом: " + card.products[i]);
+                //console.log("Обновлен cardModal продуктом: " + card.products[i]);
             }
             
             // Обновляем число товаров в корзине
@@ -146,12 +148,12 @@
          */        
         buy: function(productId) {
             
-            console.log("Проверяем, зарегестрирован ли пользователь...");
+            //console.log("Проверяем, зарегестрирован ли пользователь...");
             
             if (user.id === null || user.id === undefined) {
                 var name = $(".user-name").val();
                 var phone = $(".user-phone").val();
-                console.log("Пытаемся зарегестрировать пользователя " + name + " с телефоном " + phone);
+                //console.log("Пытаемся зарегестрировать пользователя " + name + " с телефоном " + phone);
                 if ( name.length > 0 && phone.length > 0 ) {     // Проводим регистрацию
                     methods.userRegister({name: name, phone: phone}, function(){methods.buy(productId);});
                     if (user.id) {  // Регистрация прошла успешно.
@@ -165,10 +167,10 @@
                 }
             }
             else {
-                console.log("Пользователь уже зарегестрирован с id: " + user.id);
+                //console.log("Пользователь уже зарегестрирован с id: " + user.id);
             }
             
-            console.log("Покупаем товар");
+            //console.log("Покупаем товар");
             
 
                         
@@ -178,18 +180,18 @@
             };            
             
             data["prognoz_magazinebundle_card[products][]"] = card.products;
-            console.log("Покупаем продукты: " + data["prognoz_magazinebundle_card[products][]"]);
+            //console.log("Покупаем продукты: " + data["prognoz_magazinebundle_card[products][]"]);
             
             // Если задан user.id, но корзины у него еще нет
             if (user.id && !card.id) {
                 $.post(settings.url.card + "?format=json", data, function(data,status) {     // success callback
                     // Надо очистить корзину
                     if (status == "success") {           // Корзина на сервере создана успешно
-                        console.log("Корзина успешно создана на сервере.");
+                        //console.log("Корзина успешно создана на сервере.");
                         methods.buyComplete();
                     }
                     else {
-                        console.log("Произошла ошибка " + status);
+                        //console.log("Произошла ошибка " + status);
                     }
                 });  
             /*
@@ -213,19 +215,19 @@
                     success: function(rowData,status) {
                         if (status ===200) {
                             methods.buyComplete();
-                            console.log("Корзина отредактирована со статусом 200");
+                            //console.log("Корзина отредактирована со статусом 200");
                         }    
                             
                      },
                      error: function(jqXHR, status, error) {
-                        console.log("Ошибка при регистрации пользователя: " + status + " " + error);
+                        //console.log("Ошибка при регистрации пользователя: " + status + " " + error);
                      }          
                 });
                 methods.buyComplete(); //fixme это здесь не надо, но $.ajax почему-то не отрабатывает success     
                 
             }
             else  {
-                console.log("Не удалось определить идентификатор пользователя...");
+                //console.log("Не удалось определить идентификатор пользователя...");
             }
         },
     
@@ -237,7 +239,7 @@
             jQuery("#card-message").css({"display":"block"});
             
             //$(".card-message").append('<div class="alert alert-success card-message">Спасибо за заказ! Наш менеджер свяжется с Вами по указанному телефону.</div>');
-            console.log("Наш менеджер свяжется с Вами. Большое Спасибо.");
+            //console.log("Наш менеджер свяжется с Вами. Большое Спасибо.");
         },
     
         /*
@@ -266,7 +268,7 @@
          */        
         userRegister: function(user, callback) {
             // user.phone must be set. user.name can be set
-            console.log("Регистрируем пользователя" + user.phone + " под именем " + user.name);
+            //console.log("Регистрируем пользователя" + user.phone + " под именем " + user.name);
             if (user.phone && !user.id) {
                 var data = {
                     "prognoz_magazinebundle_user[phone]": user.phone,
@@ -281,7 +283,7 @@
                         //var data = $.parseJSON(rawData);   
                         var data = rawData;
                         if (status == "success" && data.id) {
-                            console.log("Пользователь успешно зарегестрирован под id: " + data.id);
+                            //console.log("Пользователь успешно зарегестрирован под id: " + data.id);
                             methods.setUser(data);
                             user.id = data.id;
                             jQuery(".user-data").removeClass("alert").removeClass("alert-danger");
@@ -289,17 +291,17 @@
                             if (callback) { callback(); }
                         }
                        else {
-                            console.log("Запрос на регистрацию пользователя завершился ошибкой" + status);
+                            //console.log("Запрос на регистрацию пользователя завершился ошибкой" + status);
                         }
                     },    
                     error: function(jqXHR, status, error) {
-                        console.log("Ошибка при регистрации пользователя: " + status + " " + error);
+                        //console.log("Ошибка при регистрации пользователя: " + status + " " + error);
                     }        
                 });    
-                console.log("Ajax запрос на регистрацию пользователя отправлен");
+                //console.log("Ajax запрос на регистрацию пользователя отправлен");
             } else { 
                 // return false; // не хотим ломать цепочки вызовов. Но зарегестрировать пользователя нельзя
-                console.log("Регистрация пользователя невозможна.");
+                //console.log("Регистрация пользователя невозможна.");
             }    
         },
         
@@ -325,11 +327,11 @@
                         //var data = $.parseJSON(rawData);                        
                         var data = rawData;
 
-                            console.log("Пользователь успешно загружен с id: " + data.id);
+                            //console.log("Пользователь успешно загружен с id: " + data.id);
                             methods.setUser(data);
                             user.id = data.id;      
                             if (data.card.id) {
-                                console.log("У пользователя уже имеется корзина " + data.card.id + " и в ней товары " + data.card.products);
+                                //console.log("У пользователя уже имеется корзина " + data.card.id + " и в ней товары " + data.card.products);
                                 card.id = data.card.id;
                             }
                             if (callback) { callback(); }
@@ -375,7 +377,7 @@
                 
         viewCatalog: function(id) {
             var url = settings.url.catalog + id;
-            console.log("Загружаем каталог " + url);
+            //console.log("Загружаем каталог " + url);
             jQuery(".main-content-wrapper").load( url + " .main-content");
             if (window.history) {
                 window.history.pushState(null,null, url);
