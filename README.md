@@ -5,9 +5,9 @@ Simple Magazine Example for examen on new work. Do not use it in production!!!
 
 System requirements
 ===================
-apache 2
-php 5.3+
-doctrine2 
+* apache 2
+* php 5.3+
+* doctrine2 compatible database (tested on mysql)
 
 
 Installation
